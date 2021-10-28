@@ -8,26 +8,28 @@ class HomeScreen extends StatelessWidget {
         child: Text('Bienvenidos'),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Utensilios',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dangerous),
-            label: 'Riesgos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.health_and_safety_sharp),
-            label: 'Cuidados',
-          ),
-        ],
-      ),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Inicio',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Utensilios',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dangerous),
+              label: 'Riesgos',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.health_and_safety_sharp),
+              label: 'Cuidados',
+            ),
+          ],
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.blue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.cyan.shade50),
     );
   }
 }
