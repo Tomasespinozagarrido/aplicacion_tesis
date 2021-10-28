@@ -1,13 +1,40 @@
+import 'package:app_tesis/screens/riesgos.dart';
 import 'package:flutter/material.dart';
+import 'inicio.dart';
+import 'utensilios.dart';
+import 'cuidados.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentPage = 0;
+  final PageController pageController = new PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Bienvenidos'),
+      body: PageView(
+        controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          Inicio(),
+          Utensilios(),
+          Riesgos(),
+          Cuidados(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentPage,
+          onTap: (index) {
+            currentPage = index;
+            var animateToPage = pageController.animateToPage(index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut);
+            setState(() {});
+          },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -30,6 +57,22 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: Colors.blue,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.cyan.shade50),
+    );
+  }
+}
+
+class CustomScreen extends StatelessWidget {
+  final Color color;
+
+  const CustomScreen({required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      child: Center(
+        child: Text('Custom Screen'),
+      ),
     );
   }
 }
