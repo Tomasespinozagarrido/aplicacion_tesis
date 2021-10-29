@@ -16,6 +16,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(
+        child: ListView(
+        children:[
+          DrawerHeader(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(colors: <Color>[
+              Colors.lightBlue,
+              Colors.blue
+            ])
+            ),
+            child: Text('Drawer header '),
+          ),
+          CustomListTile(Icons.person,'Perfil'),
+          CustomListTile(Icons.notifications,'Notificaciones'),
+          CustomListTile(Icons.settings,'Opciones'),
+          CustomListTile(Icons.lock,'cerrar sesión'),
+          ],
+        ),
+      ),
       body: PageView(
         controller: pageController,
         physics: NeverScrollableScrollPhysics(),
@@ -74,5 +94,44 @@ class CustomScreen extends StatelessWidget {
         child: Text('Custom Screen'),
       ),
     );
+  }
+}
+
+class CustomListTile extends StatelessWidget{
+//constructor del custom list tile
+  IconData icon;
+  String text;
+
+  CustomListTile(this.icon,this.text);
+//termino del constructor  
+  @override
+  Widget build(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+      child: InkWell(
+        splashColor: Colors.cyan,
+        onTap: ()=>{},
+        child: Container(
+          height: 40,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children:<Widget>[
+              Row(
+                children:<Widget>[
+                  Icon(icon),
+                  Padding(padding: const EdgeInsets.all(8.0),
+                  child: Text(text,style: TextStyle(
+                    fontSize: 16.0,
+                    )),
+                  )
+                ]
+              ),
+            Icon(Icons.arrow_right)
+            ]
+          ),
+        ),
+      ),
+    );
+
   }
 }
