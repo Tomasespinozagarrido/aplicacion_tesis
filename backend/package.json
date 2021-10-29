@@ -1,0 +1,28 @@
+{
+  "name": "aplicacion_tesis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomasespinozagarrido/aplicacion_tesis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tomasespinozagarrido/aplicacion_tesis/issues"
+  },
+  "homepage": "https://github.com/Tomasespinozagarrido/aplicacion_tesis#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
