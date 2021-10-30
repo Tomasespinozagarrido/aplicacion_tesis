@@ -1,12 +1,14 @@
 const{ Pool } = require('pg');
 const { Sequalize } =require ('sequelize');
 
+const {usernameDB, passwordDB,hostDB,databaseDB} = require('../database/database');
+ 
 
 const pool = new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    password:'admin',
-    database:'app_tesis',
+    host: hostDB,
+    user: usernameDB,
+    password:passwordDB,
+    database:databaseDB,
     port: '5432'
 })
 //const User = require('../models/User');
