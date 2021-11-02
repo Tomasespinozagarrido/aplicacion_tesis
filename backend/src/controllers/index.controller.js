@@ -16,7 +16,7 @@ const getUsers =async (req,res)=>{
     const response = await pool.query('SELECT * FROM users');
     //const user = await User.findAll();
     //res.json({ user })
-    console.log(response.rows)
+    //console.log(response.rows)
     res.status(200).json(response.rows);
 
 };
@@ -38,8 +38,24 @@ const createUser = async(req, res) =>{
     res. send('Usuario creado');
 };
 
+const updateUser = async(req, res) =>{
+    const id = req.params.id;
+    const {nombre,email} =req.body;
+    const response = await pool.query('UPDATE users SET nombre = $1, email= $2 WHERE id=$3',[nombre,email,id]);
+    res.send('User actualizado correctamente');
+};
+const deleteUser = async(req, res)=>{
+    const id = req.params.id;
+    const response = await pool.query('DELETE FROM users where id= $1',[id]);
+    console.log(response);
+    res.send('User eliminado satisfactoriamente.')
+};
+
+
 module.exports ={
     getUsers,
     createUser,
-    getUsersById
+    updateUser,
+    getUsersById,
+    deleteUser
 }
