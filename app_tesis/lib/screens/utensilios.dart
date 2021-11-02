@@ -3,7 +3,60 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-class Utensilios extends StatefulWidget {
+class Utensilios  extends StatefulWidget {
+  const Utensilios({ Key? key }) : super(key: key);
+
+  @override
+  _UtensiliosState createState() => _UtensiliosState();
+}
+
+class _UtensiliosState extends State<Utensilios> {
+  @override
+  Widget build(BuildContext context) {
+  return CustomScrollView(
+          primary: false,
+          slivers: <Widget>[
+            SliverPadding(
+              padding: const EdgeInsets.all(20),
+              sliver: SliverGrid.count(
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: const Text("cepillos dentales"),
+                    color: Colors.cyan,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: const Text('Pastas dentales'),
+                    color:Colors.cyan,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: const Text('cepillos inter proximales'),
+                    color: Colors.cyan,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: const Text('cepillos para protesis'),
+                    color: Colors.cyan,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+  }
+}
+
+
+
+
+
+
+/*class Utensilios extends StatefulWidget {
   const Utensilios({Key? key}) : super(key: key);
   @override
   _UtensiliosState createState() => _UtensiliosState();
@@ -74,3 +127,4 @@ class _UtensiliosState extends State<Utensilios> {
     );
   }
 }
+*/
