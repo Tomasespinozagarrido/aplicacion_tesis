@@ -10,7 +10,8 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView(
+        child: Column(
       children: const <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
@@ -31,6 +32,6 @@ class _InicioState extends State<Inicio> {
               textAlign: TextAlign.justify),
         )
       ],
-    );
+    ));
   }
 }
