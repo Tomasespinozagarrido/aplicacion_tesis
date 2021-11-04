@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'utensilios/cepillos/cepillos.dart';
 
-class Utensilios  extends StatefulWidget {
-  const Utensilios({ Key? key }) : super(key: key);
+class Utensilios extends StatefulWidget {
+  const Utensilios({Key? key}) : super(key: key);
 
   @override
   _UtensiliosState createState() => _UtensiliosState();
@@ -13,45 +14,66 @@ class Utensilios  extends StatefulWidget {
 class _UtensiliosState extends State<Utensilios> {
   @override
   Widget build(BuildContext context) {
-  return CustomScrollView(
-          primary: false,
-          slivers: <Widget>[
-            SliverPadding(
-              padding: const EdgeInsets.all(20),
-              sliver: SliverGrid.count(
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text("cepillos dentales"),
-                    color: Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('Pastas dentales'),
-                    color:Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('cepillos inter proximales'),
-                    color: Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('cepillos para protesis'),
-                    color: Colors.cyan,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
+    return CustomScrollView(
+      primary: false,
+      slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.all(20),
+          sliver: SliverGrid.count(
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              MenuUtensilios(
+                  title: 'Cepillos dentales',
+                  icon: Icons.home,
+                  warna: Colors.blue),
+              MenuUtensilios(
+                  title: 'Pastas dentales',
+                  icon: Icons.home,
+                  warna: Colors.blue),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 
+class MenuUtensilios extends StatelessWidget {
+  MenuUtensilios(
+      {required this.title, required this.icon, required this.warna});
+  final String title;
+  final IconData icon;
+  final MaterialColor warna;
 
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {},
+        splashColor: Colors.blue,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              //Image(image: AssetImage('assets/images/Logo_app200p.png')),
+              Icon(
+                icon,
+                size: 70.0,
+              ),
+              Text(
+                title,
+                style: new TextStyle(fontSize: 17.0),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 
 
