@@ -12,6 +12,34 @@ class Utensilios extends StatefulWidget {
 }
 
 class _UtensiliosState extends State<Utensilios> {
+  int PaginaActual = 0;
+  final PageController utensilioController = new PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: utensilioController,
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          InicioUtensilios(
+              PaginaActual: PaginaActual,
+              utensilioController: utensilioController),
+          cepillos(),
+          cepillos(),
+          cepillos(),
+          cepillos(),
+        ],
+      ),
+    );
+  }
+}
+
+class InicioUtensilios extends StatelessWidget {
+  InicioUtensilios(
+      {required this.PaginaActual, required this.utensilioController});
+  int PaginaActual;
+  PageController utensilioController = new PageController();
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -27,11 +55,31 @@ class _UtensiliosState extends State<Utensilios> {
               MenuUtensilios(
                   title: 'Cepillos dentales',
                   icon: Icons.home,
-                  warna: Colors.blue),
+                  warna: Colors.blue,
+                  index: 1,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
               MenuUtensilios(
                   title: 'Pastas dentales',
                   icon: Icons.home,
-                  warna: Colors.blue),
+                  warna: Colors.blue,
+                  index: 2,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+              MenuUtensilios(
+                  title: 'Cepillos inter proximales',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 3,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+              MenuUtensilios(
+                  title: 'Cepillos para protesis',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 4,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
             ],
           ),
         ),
@@ -42,18 +90,32 @@ class _UtensiliosState extends State<Utensilios> {
 
 class MenuUtensilios extends StatelessWidget {
   MenuUtensilios(
-      {required this.title, required this.icon, required this.warna});
+      {required this.title,
+      required this.icon,
+      required this.warna,
+      required this.index,
+      required this.PaginaActual,
+      required this.utensilioController});
+  PageController utensilioController = new PageController();
   final String title;
+  final int index;
   final IconData icon;
   final MaterialColor warna;
+  int PaginaActual;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
-        splashColor: Colors.blue,
+        onTap: () {
+          PaginaActual = index;
+          var animateToPage = utensilioController.animateToPage(index,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut);
+          setState(() {});
+        },
+        splashColor: Colors.cyan,
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -62,6 +124,7 @@ class MenuUtensilios extends StatelessWidget {
               Icon(
                 icon,
                 size: 70.0,
+                color: warna,
               ),
               Text(
                 title,
@@ -73,6 +136,8 @@ class MenuUtensilios extends StatelessWidget {
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
 
 
