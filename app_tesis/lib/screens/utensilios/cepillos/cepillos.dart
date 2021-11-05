@@ -12,6 +12,9 @@ class _cepillosState extends State<cepillos> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.red,
+      child: const Center(
+        child: Text("CEPILLOS"),
+      ),
     );
   }
 }

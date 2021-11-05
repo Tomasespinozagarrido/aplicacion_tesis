@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'utensilios/cepillos/cepillos.dart';
+import 'inicio.dart';
 
 class Utensilios extends StatefulWidget {
   const Utensilios({Key? key}) : super(key: key);
@@ -26,9 +27,9 @@ class _UtensiliosState extends State<Utensilios> {
               PaginaActual: PaginaActual,
               utensilioController: utensilioController),
           cepillos(),
-          cepillos(),
-          cepillos(),
-          cepillos(),
+          Inicio(),
+          //cepillos(),
+          //cepillos(),
         ],
       ),
     );
