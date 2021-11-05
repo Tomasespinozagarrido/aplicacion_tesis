@@ -14,7 +14,6 @@ class _UtensiliosState extends State<Utensilios> {
   @override
   Widget build(BuildContext context) {
   return CustomScrollView(
-          primary: false,
           slivers: <Widget>[
             SliverPadding(
               padding: const EdgeInsets.all(20),
