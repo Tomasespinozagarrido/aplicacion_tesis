@@ -1,3 +1,4 @@
+import 'package:app_tesis/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -18,40 +19,74 @@ class _UtensiliosState extends State<Utensilios> {
 
   @override
   Widget build(BuildContext context) {
-  return CustomScrollView(
-          slivers: <Widget>[
-            SliverPadding(
-              padding: const EdgeInsets.all(20),
-              sliver: SliverGrid.count(
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text("cepillos dentales"),
-                    color: Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('Pastas dentales'),
-                    color:Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('cepillos inter proximales'),
-                    color: Colors.cyan,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text('cepillos para protesis'),
-                    color: Colors.cyan,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
+    return Scaffold(
+      body: PageView(
+        controller: utensilioController,
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          InicioUtensilios(
+              PaginaActual: PaginaActual,
+              utensilioController: utensilioController),
+          Inicio(),
+          cepillos(),
+          cepillos(),
+          cepillos(),
+        ],
+      ),
+    );
+  }
+}
+
+class InicioUtensilios extends StatelessWidget {
+  InicioUtensilios(
+      {required this.PaginaActual, required this.utensilioController});
+  int PaginaActual;
+  PageController utensilioController = new PageController();
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      primary: false,
+      slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.all(20),
+          sliver: SliverGrid.count(
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              MenuUtensilios(
+                  title: 'Cepillos dentales',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 1,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+              MenuUtensilios(
+                  title: 'Pastas dentales',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 2,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+              MenuUtensilios(
+                  title: 'Cepillos inter proximales',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 3,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+              MenuUtensilios(
+                  title: 'Cepillos para protesis',
+                  icon: Icons.home,
+                  warna: Colors.blue,
+                  index: 4,
+                  PaginaActual: PaginaActual,
+                  utensilioController: utensilioController),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 

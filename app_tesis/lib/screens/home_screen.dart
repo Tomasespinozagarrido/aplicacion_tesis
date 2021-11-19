@@ -33,12 +33,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Inicio(),
+      body: Utensilios(), //Inicio(),
       bottomNavigationBar: Container(
         height: 60,
         color: Colors.black12,
         child: InkWell(
-          onTap: () => print('Volver al inicio'),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+          },
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Column(
