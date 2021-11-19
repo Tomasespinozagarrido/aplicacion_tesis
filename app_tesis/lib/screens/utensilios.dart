@@ -50,9 +50,9 @@ class InicioUtensilios extends StatelessWidget {
         SliverPadding(
           padding: const EdgeInsets.all(20),
           sliver: SliverGrid.count(
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
+            crossAxisCount: 1,
             children: <Widget>[
               MenuUtensilios(
                   title: 'Cepillos dentales',
@@ -107,36 +107,39 @@ class MenuUtensilios extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {
-          PaginaActual = index;
-          var animateToPage = utensilioController.animateToPage(index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut);
-          setState(() {});
-        },
-        splashColor: Colors.cyan,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              //Image(image: AssetImage('assets/images/Logo_app200p.png')),
-              Icon(
-                icon,
-                size: 70.0,
-                color: warna,
+    return SizedBox(
+        height: 100,
+        child: Card(
+          semanticContainer: true,
+          margin: EdgeInsets.all(8),
+          child: InkWell(
+            onTap: () {
+              PaginaActual = index;
+              var animateToPage = utensilioController.animateToPage(index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut);
+              setState(() {});
+            },
+            splashColor: Colors.cyan,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  //Image(image: AssetImage('assets/images/Logo_app200p.png')),
+                  Icon(
+                    icon,
+                    size: 70.0,
+                    color: warna,
+                  ),
+                  Text(
+                    title,
+                    style: new TextStyle(fontSize: 17.0),
+                  )
+                ],
               ),
-              Text(
-                title,
-                style: new TextStyle(fontSize: 17.0),
-              )
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   void setState(Null Function() param0) {}
