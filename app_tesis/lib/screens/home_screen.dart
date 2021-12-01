@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Utensilios(), //Inicio(),
+      body: Inicio(),
       bottomNavigationBar: Container(
         height: 60,
         color: Colors.black12,

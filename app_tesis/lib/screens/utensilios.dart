@@ -29,8 +29,6 @@ class _UtensiliosState extends State<Utensilios> {
               utensilioController: utensilioController),
           Inicio(),
           cepillos(),
-          cepillos(),
-          cepillos(),
         ],
       ),
     );
@@ -44,48 +42,25 @@ class InicioUtensilios extends StatelessWidget {
   PageController utensilioController = new PageController();
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      primary: false,
-      slivers: <Widget>[
-        SliverPadding(
-          padding: const EdgeInsets.all(20),
-          sliver: SliverGrid.count(
-            crossAxisSpacing: 0,
-            mainAxisSpacing: 0,
-            crossAxisCount: 1,
-            children: <Widget>[
-              MenuUtensilios(
-                  title: 'Cepillos dentales',
-                  icon: Icons.home,
-                  warna: Colors.blue,
-                  index: 1,
-                  PaginaActual: PaginaActual,
-                  utensilioController: utensilioController),
-              MenuUtensilios(
-                  title: 'Pastas dentales',
-                  icon: Icons.home,
-                  warna: Colors.blue,
-                  index: 2,
-                  PaginaActual: PaginaActual,
-                  utensilioController: utensilioController),
-              MenuUtensilios(
-                  title: 'Cepillos inter proximales',
-                  icon: Icons.home,
-                  warna: Colors.blue,
-                  index: 3,
-                  PaginaActual: PaginaActual,
-                  utensilioController: utensilioController),
-              MenuUtensilios(
-                  title: 'Cepillos para protesis',
-                  icon: Icons.home,
-                  warna: Colors.blue,
-                  index: 4,
-                  PaginaActual: PaginaActual,
-                  utensilioController: utensilioController),
-            ],
-          ),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          MenuUtensilios(
+              title: 'Cepillos dentales',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 1,
+              PaginaActual: PaginaActual,
+              utensilioController: utensilioController),
+          MenuUtensilios(
+              title: 'Pastas dentales',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 2,
+              PaginaActual: PaginaActual,
+              utensilioController: utensilioController),
+        ],
+      ),
     );
   }
 }
@@ -108,38 +83,55 @@ class MenuUtensilios extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 100,
-        child: Card(
-          semanticContainer: true,
-          margin: EdgeInsets.all(8),
-          child: InkWell(
-            onTap: () {
-              PaginaActual = index;
-              var animateToPage = utensilioController.animateToPage(index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOut);
-              setState(() {});
-            },
-            splashColor: Colors.cyan,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  //Image(image: AssetImage('assets/images/Logo_app200p.png')),
-                  Icon(
-                    icon,
-                    size: 70.0,
-                    color: warna,
-                  ),
-                  Text(
-                    title,
-                    style: new TextStyle(fontSize: 17.0),
-                  )
-                ],
-              ),
+      height: 250,
+      child: Card(
+        elevation: 12,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            PaginaActual = index;
+            var animateToPage = utensilioController.animateToPage(index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut);
+            setState(() {});
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 36),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              gradient: LinearGradient(
+                  colors: [Color(0xFF213B6C), Color(0xFF0059A5)]),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.pink, blurRadius: 12, offset: Offset(3, 3))
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                //Image(image: AssetImage('assets/images/Logo_app200p.png')),
+                Icon(
+                  icon,
+                  size: 70.0,
+                  color: warna,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontFamily: 'Roboto',
+                      fontSize: 24,
+                      letterSpacing: 0),
+                )
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   void setState(Null Function() param0) {}
