@@ -75,7 +75,7 @@ class MenucuidadosoralesMenucuidadosorales extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 var animateToPage = MenucuidadosoralesController.animateToPage(
-                    4,
+                    4, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeOut);
               },
