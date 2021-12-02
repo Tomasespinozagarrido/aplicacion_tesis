@@ -3,77 +3,74 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'utensilios/cepillos/cepillos.dart';
-import 'cuidadosorales/menucuidadosorales.dart';
-import 'enfermedadesorales/menuenfermedadesorales.dart';
-import 'inicio.dart';
+import '../utensilios/cepillos/cepillos.dart';
+import '../inicio.dart';
 
-class Inicio extends StatefulWidget {
-  const Inicio({Key? key}) : super(key: key);
+class Menuebfernedadesorales extends StatefulWidget {
+  const Menuebfernedadesorales({Key? key}) : super(key: key);
 
   @override
-  _InicioState createState() => _InicioState();
+  _MenuebfernedadesoralesState createState() => _MenuebfernedadesoralesState();
 }
 
-class _InicioState extends State<Inicio> {
+class _MenuebfernedadesoralesState extends State<Menuebfernedadesorales> {
   int PaginaActual = 0;
-  final PageController InicioController = new PageController(initialPage: 0);
+  final PageController MenuebfernedadesoralesController = new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: InicioController,
+        controller: MenuebfernedadesoralesController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          InicioInicio(
-              PaginaActual: PaginaActual, InicioController: InicioController),
-          Menucuidadosorales(),
-          Menuebfernedadesorales(),
+          MenuebfernedadesoralesMenuebfernedadesorales(
+              PaginaActual: PaginaActual, MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+
         ],
       ),
     );
   }
 }
 
-class InicioInicio extends StatelessWidget {
-  InicioInicio({required this.PaginaActual, required this.InicioController});
+class MenuebfernedadesoralesMenuebfernedadesorales extends StatelessWidget {
+  MenuebfernedadesoralesMenuebfernedadesorales({required this.PaginaActual, required this.MenuebfernedadesoralesController});
   int PaginaActual;
-  PageController InicioController = new PageController();
+  PageController MenuebfernedadesoralesController = new PageController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          MenuInicio(
+          MenuMenuebfernedadesorales(
               title: 'Cuidados de Salud Oral',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
-              InicioController: InicioController),
-          MenuInicio(
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+          MenuMenuebfernedadesorales(
               title: 'Enfermedades Orales',
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
               PaginaActual: PaginaActual,
-              InicioController: InicioController),
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
         ],
       ),
     );
   }
 }
 
-class MenuInicio extends StatelessWidget {
-  MenuInicio(
+class MenuMenuebfernedadesorales extends StatelessWidget {
+  MenuMenuebfernedadesorales(
       {required this.title,
       required this.icon,
       required this.warna,
       required this.index,
       required this.PaginaActual,
-      required this.InicioController});
-  PageController InicioController = new PageController();
+      required this.MenuebfernedadesoralesController});
+  PageController MenuebfernedadesoralesController = new PageController();
   final String title;
   final int index;
   final IconData icon;
@@ -93,7 +90,7 @@ class MenuInicio extends StatelessWidget {
         child: InkWell(
           onTap: () {
             PaginaActual = index;
-            var animateToPage = InicioController.animateToPage(index,
+            var animateToPage = MenuebfernedadesoralesController.animateToPage(index,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOut);
             setState(() {});
@@ -106,7 +103,7 @@ class MenuInicio extends StatelessWidget {
                   colors: [Color(0xFF213B6C), Color(0xFF0059A5)]),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.cyan, blurRadius: 12, offset: Offset(3, 3))
+                    color: Colors.pink, blurRadius: 12, offset: Offset(3, 3))
               ],
             ),
             child: Row(
@@ -115,13 +112,13 @@ class MenuInicio extends StatelessWidget {
                 //Image(image: AssetImage('assets/images/Logo_app200p.png')),
                 Icon(
                   icon,
-                  size: 50.0,
+                  size: 70.0,
                   color: warna,
                 ),
                 Text(
                   title,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.red,
                       fontFamily: 'Roboto',
                       fontSize: 24,
                       letterSpacing: 0),
