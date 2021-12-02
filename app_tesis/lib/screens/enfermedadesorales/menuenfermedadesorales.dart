@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import '../utensilios/cepillos/cepillos.dart';
+import '../cuidadosorales/menucuidadosorales.dart';
 import '../inicio.dart';
 
 class Menuebfernedadesorales extends StatefulWidget {
@@ -26,6 +27,12 @@ class _MenuebfernedadesoralesState extends State<Menuebfernedadesorales> {
         children: [
           MenuebfernedadesoralesMenuebfernedadesorales(
               PaginaActual: PaginaActual, MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+          Menucuidadosorales(),
+          Menucuidadosorales(),
+          Menucuidadosorales(),
+          Menucuidadosorales(),
+          Menucuidadosorales(),
+          Inicio(),
         ],
       ),
     );
@@ -76,6 +83,25 @@ class MenuebfernedadesoralesMenuebfernedadesorales extends StatelessWidget {
               index: 5,
               PaginaActual: PaginaActual,
               MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+
+              ElevatedButton(
+              onPressed: () {
+                var animateToPage =  MenuebfernedadesoralesController.animateToPage(
+                    6, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut);
+              },
+              child: Text("Volver"),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  fixedSize: Size.fromWidth(250),
+                  minimumSize: Size.fromHeight(50),
+                  textStyle: TextStyle(fontSize: 30),
+                  primary: Colors.cyan,
+                  shadowColor: Colors.blue,
+                  onPrimary: Colors.white))
+          // FIN BOTON VOLVER
         ],
       ),
     );
