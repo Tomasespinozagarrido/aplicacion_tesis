@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:convert';
 import '../utensilios/cepillos/cepillos.dart';
 import '../inicio.dart';
+import '../enfermedadesorales/menuenfermedadesorales.dart';
 
 class Menucuidadosorales extends StatefulWidget {
   const Menucuidadosorales({Key? key}) : super(key: key);
@@ -15,7 +16,8 @@ class Menucuidadosorales extends StatefulWidget {
 
 class _MenucuidadosoralesState extends State<Menucuidadosorales> {
   int PaginaActual = 0;
-  final PageController MenucuidadosoralesController = new PageController(initialPage: 0);
+  final PageController MenucuidadosoralesController =
+      new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,12 @@ class _MenucuidadosoralesState extends State<Menucuidadosorales> {
         physics: NeverScrollableScrollPhysics(),
         children: [
           MenucuidadosoralesMenucuidadosorales(
-              PaginaActual: PaginaActual, MenucuidadosoralesController: MenucuidadosoralesController),
-
+              PaginaActual: PaginaActual,
+              MenucuidadosoralesController: MenucuidadosoralesController),
+          Menuebfernedadesorales(),
+          Menuebfernedadesorales(),
+          Menuebfernedadesorales(),
+          Inicio(),
         ],
       ),
     );
@@ -34,7 +40,8 @@ class _MenucuidadosoralesState extends State<Menucuidadosorales> {
 }
 
 class MenucuidadosoralesMenucuidadosorales extends StatelessWidget {
-  MenucuidadosoralesMenucuidadosorales({required this.PaginaActual, required this.MenucuidadosoralesController});
+  MenucuidadosoralesMenucuidadosorales(
+      {required this.PaginaActual, required this.MenucuidadosoralesController});
   int PaginaActual;
   PageController MenucuidadosoralesController = new PageController();
   @override
@@ -43,19 +50,46 @@ class MenucuidadosoralesMenucuidadosorales extends StatelessWidget {
       child: Column(
         children: <Widget>[
           MenuMenucuidadosorales(
-              title: 'Cuidados de Salud Oral',
+              title: 'Dieta e Hidratación',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
               MenucuidadosoralesController: MenucuidadosoralesController),
           MenuMenucuidadosorales(
-              title: 'Enfermedades Orales',
+              title: 'Higiene',
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
               PaginaActual: PaginaActual,
               MenucuidadosoralesController: MenucuidadosoralesController),
+          MenuMenucuidadosorales(
+              title: 'Fluoruros',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 3,
+              PaginaActual: PaginaActual,
+              MenucuidadosoralesController: MenucuidadosoralesController),
+          /*INICIO BOTON VOLVER*/
+
+          ElevatedButton(
+              onPressed: () {
+                var animateToPage = MenucuidadosoralesController.animateToPage(
+                    4,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut);
+              },
+              child: Text("Volver"),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  fixedSize: Size.fromWidth(250),
+                  minimumSize: Size.fromHeight(50),
+                  textStyle: TextStyle(fontSize: 30),
+                  primary: Colors.cyan,
+                  shadowColor: Colors.blue,
+                  onPrimary: Colors.white))
+          // FIN BOTON VOLVER
         ],
       ),
     );
@@ -90,7 +124,8 @@ class MenuMenucuidadosorales extends StatelessWidget {
         child: InkWell(
           onTap: () {
             PaginaActual = index;
-            var animateToPage = MenucuidadosoralesController.animateToPage(index,
+            var animateToPage = MenucuidadosoralesController.animateToPage(
+                index,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOut);
             setState(() {});
