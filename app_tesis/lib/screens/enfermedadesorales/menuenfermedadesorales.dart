@@ -26,7 +26,6 @@ class _MenuebfernedadesoralesState extends State<Menuebfernedadesorales> {
         children: [
           MenuebfernedadesoralesMenuebfernedadesorales(
               PaginaActual: PaginaActual, MenuebfernedadesoralesController: MenuebfernedadesoralesController),
-
         ],
       ),
     );
@@ -43,17 +42,38 @@ class MenuebfernedadesoralesMenuebfernedadesorales extends StatelessWidget {
       child: Column(
         children: <Widget>[
           MenuMenuebfernedadesorales(
-              title: 'Cuidados de Salud Oral',
+              title: 'Caries - Lesiones de caries',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
               MenuebfernedadesoralesController: MenuebfernedadesoralesController),
           MenuMenuebfernedadesorales(
-              title: 'Enfermedades Orales',
+              title: 'Enfermedad Periodontal',
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
+              PaginaActual: PaginaActual,
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
+              title: 'Candidiasis',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 3,
+              PaginaActual: PaginaActual,
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
+              title: 'Xerostomia - Hiposalivación',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 4,
+              PaginaActual: PaginaActual,
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
+              title: 'Cancer Oral',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 5,
               PaginaActual: PaginaActual,
               MenuebfernedadesoralesController: MenuebfernedadesoralesController),
         ],
@@ -80,7 +100,7 @@ class MenuMenuebfernedadesorales extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140, //AJUSTAR TAMAÑO DE CARDS
+      height: 110, //AJUSTAR TAMAÑO DE CARDS
       child: Card(
         elevation: 10,
         shape: RoundedRectangleBorder(
@@ -103,7 +123,7 @@ class MenuMenuebfernedadesorales extends StatelessWidget {
                   colors: [Color(0xFF213B6C), Color(0xFF0059A5)]),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.pink, blurRadius: 12, offset: Offset(3, 3))
+                    color: Colors.cyan, blurRadius: 12, offset: Offset(3, 3))
               ],
             ),
             child: Row(
@@ -112,15 +132,15 @@ class MenuMenuebfernedadesorales extends StatelessWidget {
                 //Image(image: AssetImage('assets/images/Logo_app200p.png')),
                 Icon(
                   icon,
-                  size: 70.0,
+                  size: 30.0,
                   color: warna,
                 ),
                 Text(
                   title,
                   style: TextStyle(
-                      color: Colors.red,
+                      color: Colors.white,
                       fontFamily: 'Roboto',
-                      fontSize: 24,
+                      fontSize: 22,
                       letterSpacing: 0),
                 )
               ],
