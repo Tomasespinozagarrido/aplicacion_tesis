@@ -1,79 +1,102 @@
+import 'package:app_tesis/screens/cuidadosorales/higiene/cepillado/Menucepillado.dart';
 import 'package:app_tesis/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'utensilios/cepillos/cepillos.dart';
-import 'cuidadosorales/menucuidadosorales.dart';
-import 'enfermedadesorales/menuenfermedadesorales.dart';
-import 'inicio.dart';
+import '../menucuidadosorales.dart';
+import 'protesis/MenuProtesis.dart';
 
-class Inicio extends StatefulWidget {
-  const Inicio({Key? key}) : super(key: key);
+class MenuHigiene extends StatefulWidget {
+  const MenuHigiene({Key? key}) : super(key: key);
 
   @override
-  _InicioState createState() => _InicioState();
+  _MenuHigieneState createState() => _MenuHigieneState();
 }
 
-class _InicioState extends State<Inicio> {
+class _MenuHigieneState extends State<MenuHigiene> {
   int PaginaActual = 0;
-  final PageController InicioController = new PageController(initialPage: 0);
+  final PageController MenuHigieneController =
+      new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: InicioController,
+        controller: MenuHigieneController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          InicioInicio(
-              PaginaActual: PaginaActual, InicioController: InicioController),
+          MenuHigieneMenuHigiene(
+              PaginaActual: PaginaActual,
+              MenuHigieneController: MenuHigieneController),
+          MenuCepillado(),
+          MenuProtesis(),
           Menucuidadosorales(),
-          Menuenfermedadesorales(),
         ],
       ),
     );
   }
 }
 
-class InicioInicio extends StatelessWidget {
-  InicioInicio({required this.PaginaActual, required this.InicioController});
+class MenuHigieneMenuHigiene extends StatelessWidget {
+  MenuHigieneMenuHigiene(
+      {required this.PaginaActual, required this.MenuHigieneController});
   int PaginaActual;
-  PageController InicioController = new PageController();
+  PageController MenuHigieneController = new PageController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          MenuInicio(
-              title: 'Cuidados de Salud Oral',
+          MenuMenuHigiene(
+              title: 'Cepillado',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
-              InicioController: InicioController),
-          MenuInicio(
-              title: 'Enfermedades Orales',
+              MenuHigieneController: MenuHigieneController),
+          MenuMenuHigiene(
+              title: 'Higiene protésica',
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
               PaginaActual: PaginaActual,
-              InicioController: InicioController),
+              MenuHigieneController: MenuHigieneController),
+          /*INICIO BOTON VOLVER*/
+
+          ElevatedButton(
+              onPressed: () {
+                var animateToPage = MenuHigieneController.animateToPage(
+                    3, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
+                    duration: const Duration(milliseconds: 1),
+                    curve: Curves.easeOut);
+              },
+              child: Text("Volver"),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  fixedSize: Size.fromWidth(250),
+                  minimumSize: Size.fromHeight(50),
+                  textStyle: TextStyle(fontSize: 30),
+                  primary: Colors.cyan,
+                  shadowColor: Colors.blue,
+                  onPrimary: Colors.white))
+          // FIN BOTON VOLVER
         ],
       ),
     );
   }
 }
 
-class MenuInicio extends StatelessWidget {
-  MenuInicio(
+class MenuMenuHigiene extends StatelessWidget {
+  MenuMenuHigiene(
       {required this.title,
       required this.icon,
       required this.warna,
       required this.index,
       required this.PaginaActual,
-      required this.InicioController});
-  PageController InicioController = new PageController();
+      required this.MenuHigieneController});
+  PageController MenuHigieneController = new PageController();
   final String title;
   final int index;
   final IconData icon;
@@ -93,8 +116,8 @@ class MenuInicio extends StatelessWidget {
         child: InkWell(
           onTap: () {
             PaginaActual = index;
-            var animateToPage = InicioController.animateToPage(index,
-                duration: const Duration(milliseconds: 300),
+            var animateToPage = MenuHigieneController.animateToPage(index,
+                duration: const Duration(milliseconds: 1),
                 curve: Curves.easeOut);
             setState(() {});
           },
@@ -106,7 +129,7 @@ class MenuInicio extends StatelessWidget {
                   colors: [Color(0xFF213B6C), Color(0xFF0059A5)]),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.cyan, blurRadius: 12, offset: Offset(3, 3))
+                    color: Colors.pink, blurRadius: 12, offset: Offset(3, 3))
               ],
             ),
             child: Row(
@@ -115,7 +138,7 @@ class MenuInicio extends StatelessWidget {
                 //Image(image: AssetImage('assets/images/Logo_app200p.png')),
                 Icon(
                   icon,
-                  size: 50.0,
+                  size: 70.0,
                   color: warna,
                 ),
                 Text(
