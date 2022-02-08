@@ -7,29 +7,26 @@ import '../utensilios/cepillos/cepillos.dart';
 import '../cuidadosorales/menucuidadosorales.dart';
 import '../inicio.dart';
 
-class Menuenfermedadesorales extends StatefulWidget {
-  const Menuenfermedadesorales({Key? key}) : super(key: key);
+class Menuebfernedadesorales extends StatefulWidget {
+  const Menuebfernedadesorales({Key? key}) : super(key: key);
 
   @override
-  _MenuenfermedadesoralesState createState() => _MenuenfermedadesoralesState();
+  _MenuebfernedadesoralesState createState() => _MenuebfernedadesoralesState();
 }
 
-class _MenuenfermedadesoralesState extends State<Menuenfermedadesorales> {
+class _MenuebfernedadesoralesState extends State<Menuebfernedadesorales> {
   int PaginaActual = 0;
-  final PageController MenuenfermedadesoralesController =
-      new PageController(initialPage: 0);
+  final PageController MenuebfernedadesoralesController = new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: MenuenfermedadesoralesController,
+        controller: MenuebfernedadesoralesController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          MenuenfermedadesoralesMenuenfermedadesorales(
-              PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
+          MenuebfernedadesoralesMenuebfernedadesorales(
+              PaginaActual: PaginaActual, MenuebfernedadesoralesController: MenuebfernedadesoralesController),
           Menucuidadosorales(),
           Menucuidadosorales(),
           Menucuidadosorales(),
@@ -42,65 +39,57 @@ class _MenuenfermedadesoralesState extends State<Menuenfermedadesorales> {
   }
 }
 
-class MenuenfermedadesoralesMenuenfermedadesorales extends StatelessWidget {
-  MenuenfermedadesoralesMenuenfermedadesorales(
-      {required this.PaginaActual,
-      required this.MenuenfermedadesoralesController});
+class MenuebfernedadesoralesMenuebfernedadesorales extends StatelessWidget {
+  MenuebfernedadesoralesMenuebfernedadesorales({required this.PaginaActual, required this.MenuebfernedadesoralesController});
   int PaginaActual;
-  PageController MenuenfermedadesoralesController = new PageController();
+  PageController MenuebfernedadesoralesController = new PageController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          MenuMenuenfermedadesorales(
+          MenuMenuebfernedadesorales(
               title: 'Caries - Lesiones de caries',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
-          MenuMenuenfermedadesorales(
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+          MenuMenuebfernedadesorales(
               title: 'Enfermedad Periodontal',
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
               PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
-          MenuMenuenfermedadesorales(
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
               title: 'Candidiasis',
               icon: Icons.home,
               warna: Colors.blue,
               index: 3,
               PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
-          MenuMenuenfermedadesorales(
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
               title: 'Xerostomia - Hiposalivación',
               icon: Icons.home,
               warna: Colors.blue,
               index: 4,
               PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
-          MenuMenuenfermedadesorales(
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
+              MenuMenuebfernedadesorales(
               title: 'Cancer Oral',
               icon: Icons.home,
               warna: Colors.blue,
               index: 5,
               PaginaActual: PaginaActual,
-              MenuenfermedadesoralesController:
-                  MenuenfermedadesoralesController),
+              MenuebfernedadesoralesController: MenuebfernedadesoralesController),
 
-          ElevatedButton(
+              ElevatedButton(
               onPressed: () {
-                var animateToPage =
-                    MenuenfermedadesoralesController.animateToPage(
-                        6, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
-                        duration: const Duration(milliseconds: 1),
-                        curve: Curves.easeOut);
+                var animateToPage =  MenuebfernedadesoralesController.animateToPage(
+                    6, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut);
               },
               child: Text("Volver"),
               style: ElevatedButton.styleFrom(
@@ -119,15 +108,15 @@ class MenuenfermedadesoralesMenuenfermedadesorales extends StatelessWidget {
   }
 }
 
-class MenuMenuenfermedadesorales extends StatelessWidget {
-  MenuMenuenfermedadesorales(
+class MenuMenuebfernedadesorales extends StatelessWidget {
+  MenuMenuebfernedadesorales(
       {required this.title,
       required this.icon,
       required this.warna,
       required this.index,
       required this.PaginaActual,
-      required this.MenuenfermedadesoralesController});
-  PageController MenuenfermedadesoralesController = new PageController();
+      required this.MenuebfernedadesoralesController});
+  PageController MenuebfernedadesoralesController = new PageController();
   final String title;
   final int index;
   final IconData icon;
@@ -147,8 +136,7 @@ class MenuMenuenfermedadesorales extends StatelessWidget {
         child: InkWell(
           onTap: () {
             PaginaActual = index;
-            var animateToPage = MenuenfermedadesoralesController.animateToPage(
-                index,
+            var animateToPage = MenuebfernedadesoralesController.animateToPage(index,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOut);
             setState(() {});

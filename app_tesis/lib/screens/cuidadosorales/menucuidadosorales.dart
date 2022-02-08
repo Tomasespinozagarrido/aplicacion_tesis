@@ -6,8 +6,6 @@ import 'dart:convert';
 import '../utensilios/cepillos/cepillos.dart';
 import '../inicio.dart';
 import '../enfermedadesorales/menuenfermedadesorales.dart';
-import 'dieta.dart';
-import 'higiene/MenuHigiene.dart';
 
 class Menucuidadosorales extends StatefulWidget {
   const Menucuidadosorales({Key? key}) : super(key: key);
@@ -31,9 +29,9 @@ class _MenucuidadosoralesState extends State<Menucuidadosorales> {
           MenucuidadosoralesMenucuidadosorales(
               PaginaActual: PaginaActual,
               MenucuidadosoralesController: MenucuidadosoralesController),
-          Dieta(),
-          MenuHigiene(),
-          Menuenfermedadesorales(),
+          Menuebfernedadesorales(),
+          Menuebfernedadesorales(),
+          Menuebfernedadesorales(),
           Inicio(),
         ],
       ),
@@ -78,7 +76,7 @@ class MenucuidadosoralesMenucuidadosorales extends StatelessWidget {
               onPressed: () {
                 var animateToPage = MenucuidadosoralesController.animateToPage(
                     4, //COLOCAR EL NUMERO DEL INDEX QUE LE CORRESPONDA
-                    duration: const Duration(milliseconds: 1),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeOut);
               },
               child: Text("Volver"),
@@ -128,7 +126,7 @@ class MenuMenucuidadosorales extends StatelessWidget {
             PaginaActual = index;
             var animateToPage = MenucuidadosoralesController.animateToPage(
                 index,
-                duration: const Duration(milliseconds: 1),
+                duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOut);
             setState(() {});
           },

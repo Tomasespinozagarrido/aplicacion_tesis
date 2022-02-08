@@ -29,7 +29,7 @@ class _InicioState extends State<Inicio> {
           InicioInicio(
               PaginaActual: PaginaActual, InicioController: InicioController),
           Menucuidadosorales(),
-          Menuenfermedadesorales(),
+          Menuebfernedadesorales(),
         ],
       ),
     );
