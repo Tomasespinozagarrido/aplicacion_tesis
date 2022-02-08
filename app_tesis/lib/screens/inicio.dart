@@ -1,4 +1,5 @@
 import 'package:app_tesis/screens/home_screen.dart';
+import 'package:app_tesis/screens/utensilios.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -30,6 +31,7 @@ class _InicioState extends State<Inicio> {
               PaginaActual: PaginaActual, InicioController: InicioController),
           Menucuidadosorales(),
           Menuenfermedadesorales(),
+          Utensilios(),
         ],
       ),
     );
@@ -57,6 +59,13 @@ class InicioInicio extends StatelessWidget {
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
+              PaginaActual: PaginaActual,
+              InicioController: InicioController),
+          MenuInicio(
+              title: 'TEST API',
+              icon: Icons.home,
+              warna: Colors.blue,
+              index: 3,
               PaginaActual: PaginaActual,
               InicioController: InicioController),
         ],

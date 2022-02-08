@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'utensilios/cepillos/cepillos.dart';
 import 'inicio.dart';
 
-class Utensilios extends StatefulWidget {
+/*class Utensilios extends StatefulWidget {
   const Utensilios({Key? key}) : super(key: key);
 
   @override
@@ -139,8 +139,8 @@ class MenuUtensilios extends StatelessWidget {
 
 
 
-
-/*class Utensilios extends StatefulWidget {
+*/
+class Utensilios extends StatefulWidget {
   const Utensilios({Key? key}) : super(key: key);
   @override
   _UtensiliosState createState() => _UtensiliosState();
@@ -167,7 +167,8 @@ class User {
 
 class _UtensiliosState extends State<Utensilios> {
   Future<User> fetchUser() async {
-    final response = await http.get(Uri.parse("http://10.0.2.2:4000/users/1"));
+    final response = await http.get(Uri.parse(
+        "https://frozen-castle-33815.herokuapp.com/users_GETALL.php"));
     var datos = ' ';
     for (var i = 1; i < response.body.length - 1; i++) {
       datos = await '${datos}${response.body[i]}';
@@ -211,4 +212,3 @@ class _UtensiliosState extends State<Utensilios> {
     );
   }
 }
-*/
