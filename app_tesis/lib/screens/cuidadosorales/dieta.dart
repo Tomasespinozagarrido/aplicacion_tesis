@@ -1,4 +1,4 @@
-+import 'package:app_tesis/screens/cuidadosorales/menucuidadosorales.dart';
+import 'package:app_tesis/screens/cuidadosorales/menucuidadosorales.dart';
 import 'package:flutter/material.dart';
 
 class Dieta extends StatefulWidget {

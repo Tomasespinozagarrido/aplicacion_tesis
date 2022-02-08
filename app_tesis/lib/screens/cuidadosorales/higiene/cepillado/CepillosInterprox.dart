@@ -1,4 +1,4 @@
-import '../Menucepillado.dart';
+import 'Menucepillado.dart';
 import 'package:flutter/material.dart';
 
 class CepillosInterprox extends StatefulWidget {

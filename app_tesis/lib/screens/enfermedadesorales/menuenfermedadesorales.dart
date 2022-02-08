@@ -1,3 +1,8 @@
+import 'package:app_tesis/screens/enfermedadesorales/Cancer.dart';
+import 'package:app_tesis/screens/enfermedadesorales/Candidiasis.dart';
+import 'package:app_tesis/screens/enfermedadesorales/EnfermedadesPeriodontales.dart';
+import 'package:app_tesis/screens/enfermedadesorales/Xerostomia.dart';
+import 'package:app_tesis/screens/enfermedadesorales/caries.dart';
 import 'package:app_tesis/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -27,11 +32,11 @@ class _MenuenfermedadesoralesState extends State<Menuenfermedadesorales> {
         children: [
           MenuenfermedadesoralesMenuenfermedadesorales(
               PaginaActual: PaginaActual, MenuenfermedadesoralesController: MenuenfermedadesoralesController),
-          Menucuidadosorales(),
-          Menucuidadosorales(),
-          Menucuidadosorales(),
-          Menucuidadosorales(),
-          Menucuidadosorales(),
+          Caries(),
+          EnfermedadesPeriodontales(),
+          Candidiasis(),
+          Xerostomia(),
+          Cancer(),
           Inicio(),
         ],
       ),

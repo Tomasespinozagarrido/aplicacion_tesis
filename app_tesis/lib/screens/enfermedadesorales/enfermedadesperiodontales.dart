@@ -4,14 +4,14 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-class Periodonciales extends StatefulWidget {
-  const Periodonciales({ Key? key }) : super(key: key);
+class EnfermedadesPeriodontales extends StatefulWidget {
+  const EnfermedadesPeriodontales({ Key? key }) : super(key: key);
 
   @override
-  _PeriodoncialesState createState() => _PeriodoncialesState();
+  _EnfermedadesPeriodontalesState createState() => _EnfermedadesPeriodontalesState();
 }
 
-class _PeriodoncialesState extends State<Periodonciales> {
+class _EnfermedadesPeriodontalesState extends State<EnfermedadesPeriodontales> {
   @override
   Widget build(BuildContext context) {
     return Container(
