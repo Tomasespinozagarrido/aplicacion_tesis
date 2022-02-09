@@ -25,4 +25,15 @@ class _CancerState extends State<Cancer> {
     ..setLooping(true)
     ..initialize().then((_) => controller.play());
   }
+
+  @override 
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override 
+  Widget build(BuildContext context){
+    return VideoPlayer(controller: controller);
+  }
 }

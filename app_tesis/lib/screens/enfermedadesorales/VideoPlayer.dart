@@ -7,9 +7,8 @@ class VideoPlayer extends StatelessWidget {
   const VideoPlayer( Key key, @required this.controller, ) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
+  Widget build(BuildContext context)  =>
+    controller != null && controller.value.isInitialized
+      ? container(alignment: Alignment.topCenter, child: buildVideo())
+
 }
