@@ -25,7 +25,7 @@ class _CancerState extends State<Cancer> {
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
   }
-  
+
   @override
   void dispose(){
     _controller.dispose();
