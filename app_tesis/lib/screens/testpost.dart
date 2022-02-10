@@ -6,14 +6,14 @@ import 'dart:convert';
 import 'utensilios/cepillos/cepillos.dart';
 import 'inicio.dart';
 
-/*class Utensilios extends StatefulWidget {
-  const Utensilios({Key? key}) : super(key: key);
+/*class TestPost extends StatefulWidget {
+  const TestPost({Key? key}) : super(key: key);
 
   @override
-  _UtensiliosState createState() => _UtensiliosState();
+  _TestPostState createState() => _TestPostState();
 }
 
-class _UtensiliosState extends State<Utensilios> {
+class _TestPostState extends State<TestPost> {
   int PaginaActual = 0;
   final PageController utensilioController = new PageController(initialPage: 0);
 
@@ -24,7 +24,7 @@ class _UtensiliosState extends State<Utensilios> {
         controller: utensilioController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          InicioUtensilios(
+          InicioTestPost(
               PaginaActual: PaginaActual,
               utensilioController: utensilioController),
           Inicio(),
@@ -35,8 +35,8 @@ class _UtensiliosState extends State<Utensilios> {
   }
 }
 
-class InicioUtensilios extends StatelessWidget {
-  InicioUtensilios(
+class InicioTestPost extends StatelessWidget {
+  InicioTestPost(
       {required this.PaginaActual, required this.utensilioController});
   int PaginaActual;
   PageController utensilioController = new PageController();
@@ -45,14 +45,14 @@ class InicioUtensilios extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          MenuUtensilios(
+          MenuTestPost(
               title: 'Cepillos dentales',
               icon: Icons.home,
               warna: Colors.blue,
               index: 1,
               PaginaActual: PaginaActual,
               utensilioController: utensilioController),
-          MenuUtensilios(
+          MenuTestPost(
               title: 'Pastas dentales',
               icon: Icons.home,
               warna: Colors.blue,
@@ -65,8 +65,8 @@ class InicioUtensilios extends StatelessWidget {
   }
 }
 
-class MenuUtensilios extends StatelessWidget {
-  MenuUtensilios(
+class MenuTestPost extends StatelessWidget {
+  MenuTestPost(
       {required this.title,
       required this.icon,
       required this.warna,
@@ -140,20 +140,22 @@ class MenuUtensilios extends StatelessWidget {
 
 
 */
-class Utensilios extends StatefulWidget {
-  const Utensilios({Key? key}) : super(key: key);
+class TestPost extends StatefulWidget {
+  const TestPost({Key? key}) : super(key: key);
   @override
-  _UtensiliosState createState() => _UtensiliosState();
+  _TestPostState createState() => _TestPostState();
 }
 
 class User {
   final int id;
   final String nombre;
   final String email;
+  final String password;
   const User({
     required this.id,
     required this.nombre,
     required this.email,
+    required this.password,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -161,26 +163,44 @@ class User {
       id: json['id'] as int,
       nombre: json['nombre'] as String,
       email: json['email'] as String,
+      password: json['password'] as String,
     );
   }
 }
 
-class _UtensiliosState extends State<Utensilios> {
-  Future<User> fetchUser() async {
-    final response = await http.get(Uri.parse(
-        "https://frozen-castle-33815.herokuapp.com/users_GETALL.php"));
+class Respuesta {
+  final String resp;
+  const Respuesta({
+    required this.resp,
+  });
+
+  factory Respuesta.fromJson(Map<String, dynamic> json) {
+    return Respuesta(resp: json['resp'] as String);
+  }
+}
+
+class _TestPostState extends State<TestPost> {
+  Future<Respuesta> fetchRespuesta() async {
+    var apiurl = '?nombre=User1';
+
+    String url = "https://frozen-castle-33815.herokuapp.com/users_login.php";
+    final response = await http.get(Uri.parse(url + apiurl));
     var datos = ' ';
+    Iterable datos2 = jsonDecode(response.body);
+    print('${datos2}!');
 
     for (var i = 1; i < response.body.length - 1; i++) {
       datos = await '${datos}${response.body[i]}';
     }
+
+    print(response.body.length);
     debugPrint(datos);
-    Map<String, dynamic> datos2 = jsonDecode(datos);
-    print('${datos2['nombre']}!');
+    // Map<String, dynamic> datos2 = jsonDecode(datos);
+    // print('${datos2['nombre']}!');
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return User.fromJson(jsonDecode(datos));
+      return Respuesta.fromJson(jsonDecode(datos));
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
@@ -188,21 +208,21 @@ class _UtensiliosState extends State<Utensilios> {
     }
   }
 
-  late Future<User> futureUser;
+  late Future<Respuesta> futureRespuesta;
   @override
   void initState() {
     super.initState();
-    futureUser = fetchUser();
+    futureRespuesta = fetchRespuesta();
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FutureBuilder<User>(
-          future: futureUser,
+        child: FutureBuilder<Respuesta>(
+          future: futureRespuesta,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.nombre);
+              return Text(snapshot.data!.resp);
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
