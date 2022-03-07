@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'inicio.dart';
 import 'utensilios.dart';
 import 'cuidados.dart';
+import 'calendario.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,9 +28,21 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('Drawer header '),
             ),
             CustomListTile(Icons.person, 'Perfil'),
+            CustomListTile(Icons.notifications, 'Calendario'),
             CustomListTile(Icons.notifications, 'Notificaciones'),
             CustomListTile(Icons.settings, 'Opciones'),
-            CustomListTile(Icons.lock, 'cerrar sesión'),
+            CustomListTile(
+              Icons.lock,
+              'cerrar sesión',
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: (Text('Calendario')),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CalendarWidget()));
+              },
+            )
           ],
         ),
       ),
