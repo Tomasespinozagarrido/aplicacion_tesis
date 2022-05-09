@@ -1,3 +1,4 @@
+import 'package:app_tesis/router/app_router.dart';
 import 'package:app_tesis/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hola Mundo',
-      home: HomeScreen(),
+      initialRoute: AppRoutes.initialRoute,
     );
   }
 }
