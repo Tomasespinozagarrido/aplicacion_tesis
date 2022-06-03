@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class cepillos extends StatefulWidget {
-  const cepillos({Key? key}) : super(key: key);
+class Cepillos extends StatefulWidget {
+  const Cepillos({Key? key}) : super(key: key);
 
   @override
-  _cepillosState createState() => _cepillosState();
+  _CepillosState createState() => _CepillosState();
 }
 
-class _cepillosState extends State<cepillos> {
+class _CepillosState extends State<Cepillos> {
   @override
   Widget build(BuildContext context) {
     return Container(
