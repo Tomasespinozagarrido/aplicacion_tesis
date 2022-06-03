@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: <Color>[Colors.lightBlue, Colors.blue])),
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Inicio(),
+      body: const Inicio(),
       bottomNavigationBar: Container(
         height: 60,
         color: Colors.black12,
@@ -69,7 +69,7 @@ class CustomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: color,
-      child: Center(
+      child: const Center(
         child: Text('Custom Screen'),
       ),
     );
