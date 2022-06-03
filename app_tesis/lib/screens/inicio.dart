@@ -1,6 +1,5 @@
 import 'package:app_tesis/screens/home_screen.dart';
 import 'package:app_tesis/screens/utensilios.dart';
-import 'package:app_tesis/screens/testpost.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -26,14 +25,13 @@ class _InicioState extends State<Inicio> {
     return Scaffold(
       body: PageView(
         controller: InicioController,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           InicioInicio(
               PaginaActual: PaginaActual, InicioController: InicioController),
-          Menucuidadosorales(),
-          Menuenfermedadesorales(),
-          Utensilios(),
-          TestPost(),
+          const Menucuidadosorales(),
+          const Menuenfermedadesorales(),
+          const Utensilios(),
         ],
       ),
     );
@@ -61,20 +59,6 @@ class InicioInicio extends StatelessWidget {
               icon: Icons.home,
               warna: Colors.blue,
               index: 2,
-              PaginaActual: PaginaActual,
-              InicioController: InicioController),
-          MenuInicio(
-              title: 'TEST API',
-              icon: Icons.home,
-              warna: Colors.blue,
-              index: 3,
-              PaginaActual: PaginaActual,
-              InicioController: InicioController),
-          MenuInicio(
-              title: 'TEST API post',
-              icon: Icons.home,
-              warna: Colors.blue,
-              index: 4,
               PaginaActual: PaginaActual,
               InicioController: InicioController),
         ],
@@ -120,7 +104,7 @@ class MenuInicio extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 36),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                   colors: [Color(0xFF213B6C), Color(0xFF0059A5)]),
               boxShadow: [
                 BoxShadow(
@@ -138,7 +122,7 @@ class MenuInicio extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Roboto',
                       fontSize: 24,
